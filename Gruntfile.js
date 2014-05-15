@@ -3,6 +3,18 @@ module.exports = function(grunt) {
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
     concat: {
+      dist: {
+        src: [
+          './public/client/app.js',
+          './public/client/link.js',
+          './public/client/links.js',
+          './public/client/linkView.js',
+          './public/client/linksView.js',
+          './public/client/createLinkView.js',
+          './public/client/router.js'
+        ],
+        dest:'public/client/production.js'
+      }
     },
 
     mochaTest: {
@@ -92,6 +104,8 @@ module.exports = function(grunt) {
   grunt.registerTask('test', [
     'mochaTest'
   ]);
+
+  grunt.registerTask('default',['concat']);
 
   grunt.registerTask('build', [
   ]);
