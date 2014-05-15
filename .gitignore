@@ -30,3 +30,6 @@ npm-debug.log
 node_modules
 
 BizSpark-5-14-2014-credentials.publishsettings
+public/dist
+azure.err
+iisnode.yml
