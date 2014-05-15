@@ -110,21 +110,29 @@ module.exports = function(grunt) {
     'mochaTest'
   ]);
 
-  grunt.registerTask('default',['concat', 'uglify']);
+  // JSHINT, concat, uglify, mochaTest, upload/ deploy
+  //
+  // default:JSHINT, mochaTest
+  // build:  concat, uglify, upload
+  // upload:
+  // deploy:
 
-  grunt.registerTask('build', ['default', 'upload']);
+  grunt.registerTask('default',['jshint','mochaTest','build','server-dev']);
 
-  grunt.registerTask('upload', function(n) {
-    if(grunt.option('prod')) {
-      grunt.task.run(['jshint', 'mochaTest', 'deploy']);
-    } else {
-      grunt.task.run([ 'server-dev' ]);
-    }
-  });
+  grunt.registerTask('deploy',['shell']);
 
-  grunt.registerTask('deploy', [
-    grunt.task.run(['shell'])
-  ]);
+  grunt.registerTask('build', ['concat', 'uglify']);
+
+
+  // grunt.registerTask('upload', function(n) {
+  //   if(grunt.option('prod')) {
+  //     grunt.task.run(['jshint', 'mochaTest', 'deploy']);
+  //   } else {
+  //     grunt.task.run([ 'server-dev' ]);
+  //   }
+  // });
+
+  // grunt.registerTask('deploy', ['shell']);
 
 
 };
